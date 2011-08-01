@@ -1,0 +1,4 @@
+module WebsiteBuilderEngine
+  class ApplicationController < ActionController::Base
+  end
+end
