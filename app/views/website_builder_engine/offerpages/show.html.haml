@@ -1,0 +1,37 @@
+%p
+  %b Title:
+  = @offerpage.title
+%p
+  %b Filename:
+  = @offerpage.filename
+%p
+  %b Description:
+  = @offerpage.description
+%p
+  %b Keywords:
+  = @offerpage.keywords
+%p
+  %b Headline:
+  = @offerpage.headline
+%p
+  %b Subhead:
+  = @offerpage.subhead
+%p
+  %b Content Block 1:
+  = @offerpage.content_block1
+%p
+  %b Content Block 2:
+  = @offerpage.content_block2
+%p
+  %b Offer Block:
+  = @offerpage.offer_block
+%p
+  %b Testimonials:
+  = @offerpage.testimonials
+%p
+  %b Video:
+  = @offerpage.video
+  
+= link_to 'Edit', edit_offerpage_path(@offerpage)
+\|
+= link_to 'Back', offerpages_path

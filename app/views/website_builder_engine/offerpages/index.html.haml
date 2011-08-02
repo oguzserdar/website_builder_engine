@@ -1,0 +1,16 @@
+%h2 Offer Pages
+
+%table
+  - @offerpages.each do |offerpage|
+    %tr
+      %td.three.columns= link_to offerpage.title, offerpage
+      %td.two.columns= link_to 'Edit', edit_offerpage_path(offerpage)
+      %td.two.columns= link_to 'Publish', publish_offerpage_path(offerpage)
+      %td.two.columns= link_to 'Remove', offerpage, :confirm => 'Are you sure?', :method => :delete
+      %td.two.columns
+        - if offerpage.published
+          = link_to "#{@url_path + offerpage.filename}.html", "#{@url_path + offerpage.filename}.html"
+
+%br
+
+= link_to 'New Offerpage', new_offerpage_path

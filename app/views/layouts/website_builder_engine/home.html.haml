@@ -1,0 +1,24 @@
+- html_tag class: 'no-js' do
+  %head
+    %title html5-website-builder
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "", :name => "description"}
+    %meta{:content => "", :name => "author"}
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1", :name => "viewport"}/
+    = stylesheet_link_tag "website_builder_engine/application"
+    = javascript_include_tag "website_builder_engine/application"
+    = csrf_meta_tags
+    %body
+      #container.container
+        %header.sixteen.columns
+          %h1.remove-bottom{:style => "margin-top: 40px"} Website Builder
+          %nav
+            %ul
+              = render 'shared/navigation'
+          %hr/
+          - flash.each do |name, msg|
+            = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+        #main{:role => "main"}
+          = yield
+        %footer.sixteen.columns
+          %hr/

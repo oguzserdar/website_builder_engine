@@ -1,0 +1,232 @@
+// Place all the styles related to the Articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// various mixins from https://github.com/thoughtbot/bourbon
+@import 'bourbon';
+
+// variables
+$textfont: Arial, "Helvetica Neue", Helvetica, sans-serif;
+$headlinefont: Tahoma, Verdana, Geneva;
+$textcolor: black;
+$h1size: 16pt;
+$h2size: 16pt;
+$h3size: 16pt;
+$textsize: 12pt;
+$sidebarh1size: 14pt;
+$sidebartextsize: 11pt;
+$smalltextsize: 9pt;
+
+body.offerpages {
+
+  @include background-image(linear-gradient(#FFF, #FCEDA6 15%));
+
+  .container {
+    background: #fff;
+    font: 14px/21px $textfont;
+    color: #000;
+    border-top: medium none; 
+    border-collapse: collapse; 
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    @include border-radius(20px);
+    
+    .logo {
+      margin-top:30px;
+      margin-bottom:0px;
+      .sitename{float:left;text-transform: lowercase;}
+      .sitename a{color:#cc0000; text-decoration:none;}
+      .sitename a:hover{color:#cc0000;}
+      .tagline{text-transform: lowercase;}
+      .tagline:before{content:" :";}
+    }
+    
+    .recommend {
+      text-align: center;
+      
+      .tweet {
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+    }
+  
+    section {
+      
+      // Facebook "like" button
+      .fb_reset {
+        text-align: center;
+        margin-top: 20px;
+        // margin-left: 20px;
+      }
+      
+      a {
+          color: #00e;
+          font-size: $textsize;
+      }
+
+      a:visited {
+          color: #551a8b;
+      }
+
+      a:hover,
+      a:active {
+          text-decoration: none;
+      }
+      
+      strong {
+        color: $textcolor;
+      }
+
+      p {
+        padding-left: 5px;
+        padding-right: 5px;
+        text-align: left;
+        font-family: $textfont;
+        font-size: $textsize;
+      }
+      
+      ul { 
+        list-style: none outside;
+        padding-left: 5px;
+        padding-right: 5px;
+        text-align: left;
+        margin: 0;
+        font-family: $textfont;
+        font-size: $textsize;
+        li:before {
+          content:"\2713\0020";
+          color: red;
+        }
+      }
+      
+      header {
+        hgroup {
+          h1 {
+            text-align: center;
+            font-family: $headlinefont;
+            font-size: $h1size;
+            font-weight: bolder;
+            line-height: 1.2;
+          }
+          h2 {
+            padding: 0px 120px;
+            text-align: center;
+            font-family: $headlinefont;
+            font-size: $h1size;
+            font-weight: bolder;
+            line-height: 1.2;
+          }
+        }
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        text-align: center;
+        padding-left: 5px;
+        padding-right: 5px;
+        font-family: $headlinefont;
+        color: inherit;
+      }
+      h1 {
+        font-size: $h1size;
+        line-height: 1.2;
+        font-weight: bolder;
+      }
+      h2 {
+        font-size: $h1size;
+        line-height: 1.2;
+        font-weight: bolder;
+      }
+      h3 {
+        font-size: $h1size;
+        line-height: 1.2;
+        font-weight: bolder;
+      }
+      blockquote {
+        background: #FEFEE6;
+        padding-top: 5px;
+        padding-left: 5px;
+        padding-right: 5px;
+        border-left: none;
+      	p {
+      	  margin-top: 10px;
+      	  font-style: normal;
+      	  color: $textcolor;
+          font-size: $sidebartextsize;
+          line-height: 1;
+        }
+        cite {
+          font-size: $smalltextsize;
+          color: $textcolor;
+          line-height: 1;
+          margin-top: 4px;
+          margin-left: 10px;
+          font-style: italic;
+        }
+      }
+    }
+    
+    .video {
+      text-align: center;
+      p {
+        text-align: center;
+        font-family: $textfont;
+        font-weight: bolder;
+        font-size: $textsize;
+        margin-top:20px;
+        margin-bottom:30px;
+      }
+    }
+    
+    aside {
+      display: inline-block;
+      float: right;
+      vertical-align: top;
+      width: 280px;
+      margin-left: 10px;
+      
+      section {
+        background: #FEFEE6;
+        border: 1px solid black;
+        padding-top: 5px;
+        padding-left: 5px;
+        padding-right: 5px;
+        
+        h1, h2, h3, h4, h5, h6 {
+          margin-top: 10px;
+          font-family: $headlinefont;
+          color: inherit;
+          font-size: $sidebarh1size;
+          line-height: 1.2;
+          font-weight: bolder;
+        }
+        p {
+          margin: 0;
+          font-size: $sidebartextsize;
+        }
+        blockquote {
+          margin: 0;
+        	blockquote:before, blockquote:after {
+        		content: '"';
+        	}
+        	p {
+        	  margin-top: 10px;
+        	  font-style: normal;
+        	  color: $textcolor;
+            font-size: $sidebartextsize;
+            line-height: 1;
+          }
+          cite {
+            font-size: $smalltextsize;
+            color: $textcolor;
+            line-height: 1;
+            margin-top: 4px;
+            margin-left: 10px;
+            font-style: italic;
+          }
+        }
+      }
+    }
+    
+  }
+}

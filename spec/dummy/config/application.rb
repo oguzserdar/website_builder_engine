@@ -7,7 +7,11 @@ require "action_mailer/railtie"
 require "active_resource/railtie"
 # # require "rails/test_unit/railtie"
 
-Bundler.require
+# If you have a Gemfile, require the default gems, the ones in the
+# current environment and also include :assets gems if in development
+# or test environments.
+Bundler.require *Rails.groups(:assets) if defined?(Bundler)
+
 require "website_builder_engine"
 
 module Dummy

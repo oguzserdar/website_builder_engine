@@ -1,0 +1,47 @@
+= form_for @article do |f|
+  -if @article.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@article.errors.count, "error")} prohibited this article from being saved:"
+      %ul
+        - @article.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :filename
+    = f.text_field :filename
+  .field
+    = f.label :description
+    = f.text_field :description
+  .field
+    = f.label :keywords
+    = f.text_field :keywords
+  .field
+    = f.label :headline
+    = f.text_field :headline
+  .field
+    = f.label :subhead
+    = f.text_field :subhead
+  .field
+    = radio_button_tag(:format, "textile")
+    = label_tag(:format_textile, "Textile")
+    = radio_button_tag(:format, "html")
+    = label_tag(:format_html, "Convert HTML to Textile")    
+  .field
+    = f.label :content
+    = f.text_area :content
+  .field
+    = f.label :sidebar
+    = f.text_area :sidebar
+  .field
+    = f.label :related_item
+  = f.fields_for :related_item do |b|
+    - Article.all.each do |item|
+      %div
+        = check_box_tag "article[related_items][]", item.id, 
+          (@article.related_items.include?(item._id.to_s) if @article.related_items)
+        = item.title
+  .actions
+    = f.submit 'Save'

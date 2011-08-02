@@ -1,0 +1,72 @@
+- ie_html :lang => 'en', :class => 'no-js' do
+  %head
+    %meta{:charset => "utf-8"}
+    %meta{"http-equiv" => "X-UA-Compatible", :content => "IE=edge,chrome=1"}
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
+    %meta{:name=>'description', :content=>"#{@article.description}"}
+    %meta{:name=>'keywords', :content=>"#{@article.keywords}"}
+    -# meta tags for the Open Graph protocol for Facebook
+    %meta{:property => "og:title", :content => "#{@article.title}"}
+    %meta{:property => "og:type", :content => "article"}
+    %meta{:property => "og:url", :content => "#{@permalink}"}
+    %meta{:property => "og:image", :content => ""}
+    %meta{:property => "og:description", :content => "#{@article.description}"}
+    %meta{:property => "og:site_name", :content => "#{@settings.site_name}"}
+    = stylesheet_link_tag :application
+    = javascript_include_tag :application
+    = csrf_meta_tags
+    %title
+      = @article.title
+    %body.articles
+      .container
+        .logo.sixteen.columns
+          .sitename
+            = link_to @settings.site_name, '/index.html'
+          .tagline
+            = @settings.site_tagline
+        %hr/
+        %article.twelve.columns
+          %header
+            %hgroup
+              %h1
+                = @article.headline
+              %h2
+                = @article.subhead
+          = @content
+          #fb-root
+            %fb:like{:action => "recommend", :send => "true", :show_faces => "false", :width => "450"}
+        %aside.four.columns
+          %section
+            %h1
+              Recommend This Article
+            %ul
+              %li
+                %g:plusone{:count => "medium", :size => "small"}
+              %li
+                %a.twitter-share-button{"data-count" => "none", 
+                  "data-via" => "#{@settings.twitter_account}", :href => "http://twitter.com/share"}
+          %section
+            %h1
+              Related Articles
+            %ul
+              - if @related_items.empty?
+                %li
+                  none
+              - else
+                - @related_items.each do |title, link|
+                  %li
+                    = link_to title, link
+          - unless @sidebar.blank?
+            %section
+              %hr
+              = @sidebar
+              %hr
+        %footer.sixteen.columns
+          %hr/
+      -# Javascript for Facebook, Twitter, and Google+ sharing
+      %script{:type => "text/javascript",
+                  :src  => "http://connect.facebook.net/en_US/all.js#appId=176448065752391&xfbml=1"}
+      %script{:type => "text/javascript",
+                  :src  => "http://platform.twitter.com/widgets.js"}
+      %script{:type => "text/javascript",
+                  :src  => "https://apis.google.com/js/plusone.js"}

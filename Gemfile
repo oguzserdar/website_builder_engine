@@ -10,7 +10,12 @@ gem 'jquery-rails'
 gem "haml", ">= 3.1.2"
 gem "haml-rails", ">= 0.3.4", :group => :development
 gem "bson_ext", ">= 1.3.1"
+<<<<<<< HEAD
 gem "mongoid", ">= 2.0.2"
+=======
+gem "mongoid", "2.0.2"
+gem "frontend-helpers"
+>>>>>>> wip
 gem 'RedCloth'
 gem 'bourbon'
 gem 'html2textile', :git => 'git://github.com/jystewart/html2textile.git'

@@ -1,0 +1,16 @@
+%h2 Articles
+
+%table
+  - @articles.each do |article|
+    %tr
+      %td.three.columns= link_to article.title, article
+      %td.two.columns= link_to 'Edit', edit_article_path(article)
+      %td.two.columns= link_to 'Publish', publish_article_path(article)
+      %td.two.columns= link_to 'Remove', article, :confirm => 'Are you sure?', :method => :delete
+      %td.two.columns
+        - if article.published
+          = link_to "#{@url_path + article.filename}.html", "#{@url_path + article.filename}.html"
+
+%br
+
+= link_to 'New Article', new_article_path

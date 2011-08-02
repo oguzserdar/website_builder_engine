@@ -1,0 +1,36 @@
+%p
+  %b Title:
+  = @article.title
+%p
+  %b Filename:
+  = @article.filename
+%p
+  %b Description:
+  = @article.description
+%p
+  %b Keywords:
+  = @article.keywords
+%p
+  %b Headline:
+  = @article.headline
+%p
+  %b Subhead:
+  = @article.subhead
+%p
+  %b Content:
+  = @article.content
+
+%p
+  %b Article sidebar:
+  = @article.sidebar
+    
+%p
+  %b Related Articles:
+  - if @article.related_items
+    - @article.related_items.each do |item|
+      %br
+      = item
+
+= link_to 'Edit', edit_article_path(@article)
+\|
+= link_to 'Back', articles_path

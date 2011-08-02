@@ -1,0 +1,7 @@
+%p
+  %b Title:
+  = @article.title
+%p
+  %b View it here:
+  = link_to "#{@url_path + @article.filename}.html", "#{@url_path + @article.filename}.html"
+
