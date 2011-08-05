@@ -5,10 +5,10 @@
     %meta{:content => "", :name => "description"}
     %meta{:content => "", :name => "author"}
     %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1", :name => "viewport"}/
-    = stylesheet_link_tag "website_builder_engine/application"
-    = javascript_include_tag "website_builder_engine/application"
+    = stylesheet_link_tag :application
+    = javascript_include_tag :application
     = csrf_meta_tags
-    %body
+    %body{:class => params[:controller]}
       #container.container
         %header.sixteen.columns
           %h1.remove-bottom{:style => "margin-top: 40px"} Website Builder
