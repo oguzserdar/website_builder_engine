@@ -6,7 +6,7 @@ module WebsiteBuilderEngine
     def publish
       @offerpage = Offerpage.find(params[:id])
       @permalink = "http://#{@settings.domain}/#{@settings.offerpages_directory}/#{@offerpage.filename}.html"
-      offerpage_page = render_to_string(:template => "offerpages/template.html.haml", :layout => false )
+      offerpage_page = render_to_string(:template => "website_builder_engine/offerpages/template.html.haml", :layout => false )
       FileUtils.makedirs(@file_path) unless File.exists?(@file_path)
       File.open("#{@file_path + @offerpage.filename}.html", 'w') {|f| f.write(offerpage_page) }
       @offerpage.update_attribute(:published, true)
