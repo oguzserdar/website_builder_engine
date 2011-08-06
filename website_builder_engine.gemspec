@@ -14,12 +14,13 @@ Gem::Specification.new do |s|
   
   s.rubyforge_project = "website_builder_engine"
   
-  s.add_dependency "haml", "~> 3.1.2"
-  s.add_dependency "bson_ext", "~> 1.3.1"
-  s.add_dependency "mongoid", "~> 2.0.2"
+  s.add_dependency "haml"
+  s.add_dependency "bson_ext"
+  s.add_dependency "mongoid"
   s.add_dependency "RedCloth"
   s.add_dependency "bourbon"
   s.add_dependency "html2textile"
+  s.add_dependency "frontend-helpers"
   
   s.add_development_dependency "rspec", "~> 2.6"
   
