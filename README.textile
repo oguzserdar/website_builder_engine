@@ -1,0 +1,110 @@
+h1. Website Builder Engine
+
+Input text into forms and generate static HTML5 web pages. This is a Rails 3.1 engine that can be added to any Rails 3.1 application. It creates a simple website suitable for a typical Internet marketing campaign, with a home page, a template page for an offer (for example, to sell a product or capture an email address), plus template pages for related articles.
+
+Any issues? Please create a "GitHub issue":https://github.com/DanielKehoe/website_builder_engine/issues.
+
+h2. Dependencies
+
+Before running this app, you will need:
+
+* The Ruby language (version 1.9.2)
+** @$ ruby -v@
+* Rails 3.1
+** @$ rails -v@
+* A working installation of "MongoDB":http://www.mongodb.org/ (version 1.6.0 or newer)
+
+See "Installing Rails 3.1":http://railsapps.github.com/installing-rails-3-1.html and "Managing Rails Versions and Gems":http://railsapps.github.com/managing-rails-versions-gems.html for detailed instructions and advice.
+
+h4. Installing MongoDB
+
+If you don't have MongoDB installed on your computer, you'll need to install it and set it up to be always running on your computer (run at launch). On Mac OS X, the easiest way to install MongoDB is to install "Homebrew":http://mxcl.github.com/homebrew/ and then run the following:
+
+<pre>
+brew install mongodb
+</pre>
+
+Homebrew will provide post-installation instructions to get MongoDB running. The last line of the installation output shows you the MongoDB install location (for example, */usr/local/Cellar/mongodb/1.8.0-x86_64*). You'll find the MongoDB configuration file there. After an installation using Homebrew, the default data directory will be */usr/local/var/mongodb*.
+
+h4. Your Parent Application
+
+This gem provides an "app within an app" (a Rails engine). You must create your application and then add the Website Builder Engine to it. You may simply use the @rails new@ comand to create an application. For a full-featured and compatible starter app, I recommend creating an application using the application template supplied for the "RailsApps Rails3-Mongoid-Devise":https://github.com/RailsApps/rails3-mongoid-devise project. You can create a ready-to-use application with this command:
+
+<pre>
+  $ rails new APP_NAME -m https://github.com/RailsApps/rails3-application-templates/raw/master/rails3-mongoid-devise-template.rb -T -O
+</pre>
+
+Use the -T -O flags to skip Test::Unit files and Active Record files. See the "Rails3-Mongoid-Devise":https://github.com/RailsApps/rails3-mongoid-devise documentation for instructions.
+
+h2. Gems
+
+Add the Website Builder Engine gem to your application's Gemfile. You'll need several other gems as well.
+
+<pre>
+  gem "website_builder_engine"
+  gem "frontend-helpers"
+  gem 'RedCloth'
+  gem 'bourbon'
+  gem 'html2textile', :git => 'git://github.com/jystewart/html2textile.git'
+</pre>
+
+See an example "Rails 3.1 Gemfile":http://railsapps.github.com/rails-3-1-example-gemfile.html.
+
+h2. Install the Required Gems
+
+Install the required gems on your computer:
+
+@$ bundle install@
+
+You can check which gems are installed on your computer with:
+
+@$ gem list --local@
+
+Keep in mind that you have installed these gems locally. When you deploy the app to another server, the same gems (and versions) must be available.
+
+h2. Deploy to Heroku
+
+For your convenience, here are "instructions for deploying your app to Heroku":http://railsapps.github.com/rails-heroku-tutorial.html. Heroku provides low cost, easily configured Rails application hosting.
+
+h4. Issues
+
+Please create an "issue on GitHub":https://github.com/DanielKehoe/website_builder_engine/issues if you identify any problems or have suggestions for improvements.
+
+h2. Contributing
+
+If you make improvements to this application, please share with others.
+
+Send the author a message, create an "issue":https://github.com/DanielKehoe/website_builder_engine/issues, or fork the project and submit a pull request.
+
+If you add functionality to this gem, create an alternative implementation, or release an gem that is similar, please contact me and I'll add a note to the README so that others can find your work.
+
+h2. Credits
+
+Daniel Kehoe ("http://danielkehoe.com/":http://danielkehoe.com/) implemented the gem.
+
+Is the gem useful to you? Follow me on Twitter:
+"@rails_apps":http://twitter.com/rails_apps
+and tweet some praise. I'd love to know you were helped out by what I've put together.
+
+h2. MIT License
+
+Copyright 2011 Daniel Kehoe
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
