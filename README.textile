@@ -66,7 +66,7 @@ h2. Deploy to Heroku
 
 For your convenience, here are "instructions for deploying your app to Heroku":http://railsapps.github.com/rails-heroku-tutorial.html. Heroku provides low cost, easily configured Rails application hosting.
 
-h4. Issues
+h2. Issues
 
 Please create an "issue on GitHub":https://github.com/DanielKehoe/website_builder_engine/issues if you identify any problems or have suggestions for improvements.
 
