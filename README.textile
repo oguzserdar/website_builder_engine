@@ -1,8 +1,51 @@
 h1. Website Builder Engine
 
-Input text into forms and generate static HTML5 web pages. This is a Rails 3.1 engine that can be added to any Rails 3.1 application. It creates a simple website suitable for a typical Internet marketing campaign, with a home page, a template page for an offer (for example, to sell a product or capture an email address), plus template pages for related articles.
+Add this Rails 3.1 engine to any Rails 3.1 application and generate static HTML5 web pages. It creates a simple website suitable for a typical Internet marketing campaign, with a home page, a template page for an offer (for example, to sell a product or capture an email address), plus template pages for related articles.
 
 Any issues? Please create a "GitHub issue":https://github.com/DanielKehoe/website_builder_engine/issues.
+
+h2. Intended Use
+
+The goal of this project is to streamline the process of producing a simple web "microsite."
+
+It is suitable for experienced Rails developers who want a speedy way to produce simple web sites.
+
+h4. For Simple Microsites
+
+Web developers often are asked to produce a simple site composed of a home page, a few articles (for search engine optimization), plus a landing page for a product or service offer.
+
+h4. For Free Hosting on Heroku
+
+This engine can be added to any simple Rails application and hosted on Heroku for free.
+
+h4. Copy, Paste, and Publish
+
+Text for the web pages is entered into simple forms, saved into a database, "poured" into well-structured templates, and published as static HTML5 web pages.
+
+h4. Requires Textile for Content Markup
+
+Textile markup is required for content. Requiring Textile imposes consistency. Textile is easy for a writer to format in a text editor. HTML can be copied from existing sites and will be saved in the database as Textile (eliminating any inconsistent or substandard HTML markup).
+
+h4. Easily Customized Web Pages
+
+After publishing, generated web pages are saved as well-structured, standard HTML5 files. The generated files can be downloaded, customized as needed, and hosted anywhere. It's easier to edit a well-formed HTML file than to create it from scratch.
+
+h2. Other Approaches
+
+Web developers can build a simple microsite in HTML/CSS with a text editor or WYSIWYG editor. Or they can use Wordpress. This Rails engine offers an alternative for Rails developers who don't want to write raw HTML from scratch or use Wordpress.
+
+h4. Versus Writing HTML From Scratch
+
+* It is tedious to build a site from scratch using HTML
+* It can be difficult to find an example of well-structured, clean, current HTML5 to use as a template
+
+h4. An Alternative to Wordpress
+
+* The engine uses a templating language that is familar to Rails developers (ERB or Haml)
+* Generated code is well-structured HTML5 and easy to edit for customization
+* A site be hosted for free on Heroku
+* Static HTML5 files offer a faster site response
+* Website versions can be saved to GitHub for Git-based version control
 
 h2. Dependencies
 
@@ -41,11 +84,18 @@ h2. Gems
 Add the Website Builder Engine gem to your application's Gemfile. You'll need several other gems as well.
 
 <pre>
-  gem "website_builder_engine"
-  gem "frontend-helpers"
-  gem 'RedCloth'
-  gem 'bourbon'
-  gem 'html2textile', :git => 'git://github.com/jystewart/html2textile.git'
+gem "website_builder_engine"
+gem "frontend-helpers"
+gem 'RedCloth'
+gem 'bourbon'
+gem 'html2textile', :git => 'git://github.com/jystewart/html2textile.git'
+</pre>
+
+If you intend to deploy to Heroku, add:
+
+<pre>
+gem "thin", :group => :production
+gem "heroku"
 </pre>
 
 See an example "Rails 3.1 Gemfile":http://railsapps.github.com/rails-3-1-example-gemfile.html.
@@ -61,6 +111,106 @@ You can check which gems are installed on your computer with:
 @$ gem list --local@
 
 Keep in mind that you have installed these gems locally. When you deploy the app to another server, the same gems (and versions) must be available.
+
+h2. Mount the Engine
+
+If you don't restrict access, anyone can change the generated web pages if they know the administrative interface's URL.
+
+The examples below make the website-building administrative interface available at "http://localhost:3000/builder":http://localhost:3000/builder but you can provide any path you'd like.
+
+h4. Without Authentication (Not Recommended)
+
+Install the engine in your application by adding to your *config/routes.rb* file:
+
+<pre>
+mount WebsiteBuilderEngine::Engine, :at => '/builder'
+</pre>
+
+h4. With Authentication (Using Devise)
+
+If you application is using Devise for authentication, it is easy to restrict access to the engine's administrative interface using routes-based authentication:
+
+<pre>
+authenticate :user do
+  mount WebsiteBuilderEngine::Engine, :at => '/builder'
+end
+</pre>
+
+If necessary, you can build your own routes-based authentication (but use Devise, it's easier).
+
+h2. Add Stylesheet Files
+
+This step should be implemented with a Rails generator. But it's not. So...
+
+Copy the following files from the GitHub repository to the *app/assets/stylesheets* directory:
+
+<pre>
+$ cd app/assets/stylesheets
+$ curl -o articles.css.scss https://raw.github.com/DanielKehoe/website_builder_engine/master/app/assets/stylesheets/website_builder_engine/articles.css.scss
+$ curl -o offerpages.css.scss https://github.com/DanielKehoe/website_builder_engine/blob/master/app/assets/stylesheets/website_builder_engine/offerpages.css.scss
+</pre>
+
+h2. Initialize the Database
+
+h4. Set Up a Database Seed File
+
+If you are using Devise, you may want to set up a default user so you can easily log in to test the app. You may also want to add default data for the web pages you'll generate. You can see an example of a "default db/seeds.rb file":https://github.com/DanielKehoe/website_builder_engine/blob/master/db/seeds.rb.
+
+h4. Seed the Database
+
+Initialize the MongoDB database by running the command:
+
+<pre>
+$ rake db:seed
+</pre>
+
+h2. Test the App
+
+You can check that your app runs properly by entering the command
+
+<pre>
+$ rails server
+</pre>
+
+To see the engine in action, open a browser window and navigate to "http://localhost:3000/builder":http://localhost:3000/builder.
+
+h2. Usage
+
+In its current form, the engine provides links to create "offer pages" and "articles".
+
+For example, you can navigate to "http://localhost:3000/builder/articles/new":http://localhost:3000/builder/articles/new and enter data for a new article. Fields that are text areas can be populated with text in the "Textile":http://redcloth.org/textile/ markup format. Or you can enter HTML and the engine will downgrade it to Textile (useful if you are copying from an existing website).
+
+After you save data for an article, you'll find a link you can use to "Publish" the article. Clicking "Publish" pours the data into an HTML5 template and saves the file as a static web page. After publishing, you can follow a link to the static web page to inspect the results.
+
+Publishing any "article" page also generates a home page at "http://localhost:3000/index.html":http://localhost:3000/index.html.
+
+h2. Customizing Web Pages
+
+Published web pages are well-structured standard HTML5 files generated from template files that Rails can parse (either ERB or Haml templating languages).
+
+h4. Modify a Stylesheet
+
+You can modify the look and feel of the web pages by changing the corresponding CSS files:
+
+* *app/assets/stylesheets/articles.css.scss*
+* *app/assets/stylesheets/offerpages.css.scss*
+
+h4. Modify a Template File
+
+You change the structure of the files by overriding the engine's template files. Copy the originals from the GitHub repository:
+
+<pre>
+$ curl -o app/views/website_builder_engine/articles/template.html.haml https://github.com/DanielKehoe/website_builder_engine/blob/master/app/views/website_builder_engine/articles/template.html.haml
+$ curl -o app/views/website_builder_engine/offerpages/template.html.haml https://github.com/DanielKehoe/website_builder_engine/blob/master/app/views/website_builder_engine/offerpages/template.html.haml
+</pre>
+
+Modify or replace the originals with templates of your own design.
+
+h4. Create Additional Pages
+
+In its current form, the engine only generates "offer pages" and "articles" (plus a home page). If you want other types of pages (for example, "about" or "contact"), you can fork the project. Make a pull request and I will add your additional pages to the gem.
+
+You can use a forked vesion of the gem to publish pages locally. If you wish to deploy to Heroku, you'll need to publish (release) a new gem (or submit your contributions and I'll release a new version of this gem).
 
 h2. Deploy to Heroku
 

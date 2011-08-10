@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Daniel Kehoe"]
   s.email       = ["daniel@danielkehoe.com"]
   s.homepage    = "https://github.com/DanielKehoe/website_builder_engine"
-  s.summary     = "Mountable Rails 3.1 engine generates static HTML5 webpages using form input."
+  s.summary     = "Rails 3.1 engine generates static HTML5 webpages."
   s.description = "Add this engine to any Rails 3.1 app and create static webpages from data added through a form."
   
   s.rubyforge_project = "website_builder_engine"
