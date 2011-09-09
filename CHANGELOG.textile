@@ -1,0 +1,9 @@
+h1. CHANGELOG
+
+h2. 0.0.2 unreleased
+
+* fix indentation of 'body' tag in layouts and templates
+
+h2. 0.0.1 August 10, 2011
+
+* Initial release
