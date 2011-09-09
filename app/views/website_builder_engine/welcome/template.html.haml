@@ -17,50 +17,50 @@
     = csrf_meta_tags
     %title
       = @settings.site_title
-    %body.welcome
-      .container
-        .logo.sixteen.columns
-          .sitename
-            = link_to @settings.site_name, '/index.html'
-          .tagline
-            = @settings.site_tagline
-        %hr/
-        %article.twelve.columns
-          %header
-            %h1
-              = @settings.site_title
-          #main{:role => "main"}
-            %ul
-              - if @articles.empty?
+  %body.welcome
+    .container
+      .logo.sixteen.columns
+        .sitename
+          = link_to @settings.site_name, '/index.html'
+        .tagline
+          = @settings.site_tagline
+      %hr/
+      %article.twelve.columns
+        %header
+          %h1
+            = @settings.site_title
+        #main{:role => "main"}
+          %ul
+            - if @articles.empty?
+              %li
+                none
+            - else
+              - @articles.each do |article|
                 %li
-                  none
-              - else
-                - @articles.each do |article|
-                  %li
-                    = link_to article.title, "#{@url_path + article.filename}.html"
-          #fb-root
-            %fb:like{:action => "recommend", :send => "true", :show_faces => "false", :width => "450"}
-        %aside.four.columns
+                  = link_to article.title, "#{@url_path + article.filename}.html"
+        #fb-root
+          %fb:like{:action => "recommend", :send => "true", :show_faces => "false", :width => "450"}
+      %aside.four.columns
+        %section
+          %h1
+            Recommend This Site
+          %ul
+            %li
+              %g:plusone{:count => "medium", :size => "small"}
+            %li
+              %a.twitter-share-button{"data-count" => "none", 
+                "data-via" => "#{@settings.twitter_account}", :href => "http://twitter.com/share"}
+        - unless @welcome_sidebar.blank?
           %section
-            %h1
-              Recommend This Site
-            %ul
-              %li
-                %g:plusone{:count => "medium", :size => "small"}
-              %li
-                %a.twitter-share-button{"data-count" => "none", 
-                  "data-via" => "#{@settings.twitter_account}", :href => "http://twitter.com/share"}
-          - unless @welcome_sidebar.blank?
-            %section
-              %hr
-              = @welcome_sidebar
-              %hr
-        %footer.sixteen.columns
-          %hr/
-      -# Javascript for Facebook, Twitter, and Google+ sharing
-      %script{:type => "text/javascript",
-                  :src  => "http://connect.facebook.net/en_US/all.js#appId=176448065752391&xfbml=1"}
-      %script{:type => "text/javascript",
-                  :src  => "http://platform.twitter.com/widgets.js"}
-      %script{:type => "text/javascript",
+            %hr
+            = @welcome_sidebar
+            %hr
+      %footer.sixteen.columns
+        %hr/
+    -# Javascript for Facebook, Twitter, and Google+ sharing
+    %script{:type => "text/javascript",
+                :src  => "http://connect.facebook.net/en_US/all.js#appId=176448065752391&xfbml=1"}
+    %script{:type => "text/javascript",
+                :src  => "http://platform.twitter.com/widgets.js"}
+    %script{:type => "text/javascript",
                   :src  => "https://apis.google.com/js/plusone.js"}

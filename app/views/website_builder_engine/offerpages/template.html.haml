@@ -17,55 +17,55 @@
     = csrf_meta_tags
     %title
       = @offerpage.title
-    %body.offerpages
-      .container
-        .logo.sixteen.columns
-        %br.clear
-        .row
-          .recommend.two.columns.alpha
-            .plusone
-              %g:plusone{:size => "tall"}
-            .tweet
-              %a.twitter-share-button{"data-count" => "none", 
-                "data-via" => "#{@settings.twitter_account}", :href => "http://twitter.com/share"}
-          .twelve.columns.box.clearfix.omega
+  %body.offerpages
+    .container
+      .logo.sixteen.columns
+      %br.clear
+      .row
+        .recommend.two.columns.alpha
+          .plusone
+            %g:plusone{:size => "tall"}
+          .tweet
+            %a.twitter-share-button{"data-count" => "none", 
+              "data-via" => "#{@settings.twitter_account}", :href => "http://twitter.com/share"}
+        .twelve.columns.box.clearfix.omega
+          %section
+            - unless @offerpage.video.blank?
+              .video
+                %script{:type => "text/javascript",
+                        :src  => "#{@offerpage.video}"}
+                %p Press Play to Watch This Video
+            #fb-root
+              %fb:like{:action => "recommend", :send => "true", :show_faces => "false", :width => "450"}
+            %header
+              %hgroup
+                %h1
+                  :textile
+                    #{@offerpage.headline}
+                %h2
+                  :textile
+                    #{@offerpage.subhead}
+            :textile
+              #{@offerpage.content_block1}
             %section
-              - unless @offerpage.video.blank?
-                .video
-                  %script{:type => "text/javascript",
-                          :src  => "#{@offerpage.video}"}
-                  %p Press Play to Watch This Video
-              #fb-root
-                %fb:like{:action => "recommend", :send => "true", :show_faces => "false", :width => "450"}
-              %header
-                %hgroup
-                  %h1
+              - if @offerpage.testimonials
+                %aside
+                  %section
                     :textile
-                      #{@offerpage.headline}
-                  %h2
-                    :textile
-                      #{@offerpage.subhead}
+                      #{@offerpage.testimonials}
               :textile
-                #{@offerpage.content_block1}
-              %section
-                - if @offerpage.testimonials
-                  %aside
-                    %section
-                      :textile
-                        #{@offerpage.testimonials}
-                :textile
-                  #{@offerpage.content_block2}
-            %br.clear
-            %section
-              :textile
-                #{@offerpage.offer_block}
-        %br.clear
-        %hr/
-        %footer.twelve.columns
-      -# Javascript for Facebook, Twitter, and Google+ sharing
-      %script{:type => "text/javascript",
-                  :src  => "http://connect.facebook.net/en_US/all.js#appId=176448065752391&xfbml=1"}
-      %script{:type => "text/javascript",
-                  :src  => "http://platform.twitter.com/widgets.js"}
-      %script{:type => "text/javascript",
-                  :src  => "https://apis.google.com/js/plusone.js"}
+                #{@offerpage.content_block2}
+          %br.clear
+          %section
+            :textile
+              #{@offerpage.offer_block}
+      %br.clear
+      %hr/
+      %footer.twelve.columns
+    -# Javascript for Facebook, Twitter, and Google+ sharing
+    %script{:type => "text/javascript",
+                :src  => "http://connect.facebook.net/en_US/all.js#appId=176448065752391&xfbml=1"}
+    %script{:type => "text/javascript",
+                :src  => "http://platform.twitter.com/widgets.js"}
+    %script{:type => "text/javascript",
+                :src  => "https://apis.google.com/js/plusone.js"}
