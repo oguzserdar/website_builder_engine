@@ -63,6 +63,9 @@ module WebsiteBuilderEngine
 
     def create
       @article = Article.new(params[:article])
+      if params[:article][:filename].ends_with?(".html")
+        params[:article][:filename].gsub!('.html','')
+      end
       if params[:format] == 'html'
         p1 = HTMLToTextileParser.new
         p2 = HTMLToTextileParser.new
@@ -82,6 +85,9 @@ module WebsiteBuilderEngine
 
     def update
       @article = Article.find(params[:id])
+      if params[:article][:filename].ends_with?(".html")
+        params[:article][:filename].gsub!('.html','')
+      end
       params[:article][:related_items] ||= []
       respond_to do |format|
         if @article.update_attributes(params[:article])

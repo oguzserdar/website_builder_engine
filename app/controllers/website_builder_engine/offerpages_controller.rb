@@ -43,6 +43,9 @@ module WebsiteBuilderEngine
 
     def create
       @offerpage = Offerpage.new(params[:offerpage])
+      if params[:offerpage][:filename].ends_with?(".html")
+        params[:offerpage][:filename].gsub!('.html','')
+      end
       if params[:format] == 'html'
         p1 = HTMLToTextileParser.new
         p2 = HTMLToTextileParser.new
@@ -68,6 +71,9 @@ module WebsiteBuilderEngine
 
     def update
       @offerpage = Offerpage.find(params[:id])
+      if params[:offerpage][:filename].ends_with?(".html")
+        params[:offerpage][:filename].gsub!('.html','')
+      end
       respond_to do |format|
         if @offerpage.update_attributes(params[:offerpage])
           format.html { redirect_to offerpages_path, notice: 'Offerpage was successfully updated.' }
