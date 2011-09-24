@@ -7,7 +7,7 @@ GIT
 PATH
   remote: .
   specs:
-    website_builder_engine (0.0.1)
+    website_builder_engine (0.0.2)
       RedCloth
       bourbon
       bson_ext
