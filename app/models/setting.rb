@@ -10,4 +10,5 @@ class Setting
   field :articles_directory, :type => String
   field :offerpages_directory, :type => String
   field :sidebar, :type => String
+  field :introduction, :type => String
 end

@@ -1,5 +1,10 @@
 h1. CHANGELOG
 
+h2. 0.0.3 September 25, 2011
+
+* rework home page template
+* add missing stylesheet for home page
+
 h2. 0.0.2 September 24, 2011
 
 * fix indentation of 'body' tag in layouts and templates
