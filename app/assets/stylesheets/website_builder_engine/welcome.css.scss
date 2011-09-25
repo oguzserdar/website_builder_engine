@@ -1,0 +1,87 @@
+// Place all the styles related to the Articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body.welcome {
+  .container {
+    background: #fff;
+    font: 14px/21px Georgia, Times, serif;
+    color: #555;
+    
+    .logo {
+      margin-top:30px;
+      margin-bottom:0px;
+      .sitename{float:left;text-transform: lowercase;}
+      .sitename a{color:#cc0000; text-decoration:none;}
+      .sitename a:hover{color:#cc0000;}
+      .tagline{text-transform: lowercase;}
+      .tagline:before{content:" :";}
+    }
+  
+    article {
+      h1, h2, h3, h4, h5, h6, p {
+        font-family: inherit;
+        color: inherit;
+      }
+      h1 {
+        font-size: 28px;
+        padding-bottom: 5px;
+        line-height: 1em;
+      }
+      h2 {
+        font-size: 20px;
+        line-height: 30px;
+      }
+      h3 {
+        font-size: 16px;
+        line-height: 30px;
+      }
+      blockquote {
+        font-size: inherit;
+        line-height: inherit;
+        margin: 1.5em;
+        padding: 0;
+        border-left: none;
+        p {
+          font-size: inherit;
+          line-height: inherit;
+          color: #666;
+          font-style: italic;
+        }
+      }
+    }
+    
+    aside {
+      section {
+        h1, h2, h3, h4, h5, h6, p {
+          font-family: inherit;
+          color: inherit;
+        }
+        h1 {
+          color: #444;
+          border-bottom: 1px solid #ccc;
+          font-size: 14px;
+          padding-bottom: 5px;
+          line-height: 30px;
+        }
+        ul {
+          font-family: inherit;
+          color: inherit;
+          font-size: inherit;
+          line-height: inherit;
+          margin: 0;
+          padding: 15px;
+          li {
+            a {
+              text-decoration: none;
+              color: #cc0000;
+            }
+            a:hover {
+              background-color: #000;
+            }
+          }
+        }
+      }
+    }
+    
+  }
+}
