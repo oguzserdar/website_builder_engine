@@ -2,6 +2,7 @@ h1. CHANGELOG
 
 h2. 0.0.3 September 25, 2011
 
+* improve Facebook OpenGraph metadata for templates
 * add Google Analytics script to all templates
 * rework home page template
 * add missing stylesheet for home page

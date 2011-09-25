@@ -6,12 +6,18 @@
     %meta{:name=>'description', :content=>"#{@settings.site_description}"}
     %meta{:name=>'keywords', :content=>"#{@settings.site_keywords}"}
     -# meta tags for the Open Graph protocol for Facebook
-    %meta{:property => "og:title", :content => "#{@settings.site_title}"}
-    %meta{:property => "og:type", :content => "article"}
+    %meta{:property => "og:type", :content => "website"}
     %meta{:property => "og:url", :content => "#{@permalink}"}
-    %meta{:property => "og:image", :content => ""}
-    %meta{:property => "og:description", :content => "#{@settings.site_description}"}
-    %meta{:property => "og:site_name", :content => "#{@settings.site_name}"}
+    - unless @settings.site_title.blank?
+      %meta{:property => "og:title", :content => "#{@settings.site_title}"}
+    - unless @settings.site_image_url.blank?
+      %meta{:property => "og:image", :content => "#{@settings.site_image_url}"}
+    - unless @settings.site_description.blank?
+      %meta{:property => "og:description", :content => "#{@settings.site_description}"}
+    - unless @settings.site_name.blank?
+      %meta{:property => "og:site_name", :content => "#{@settings.site_name}"}
+    - unless @settings.facebook_admin_id.blank?
+      %meta{:property => "fb:admins", :content => "#{@settings.facebook_admin_id}"}
     = stylesheet_link_tag :application
     = javascript_include_tag :application
     = csrf_meta_tags

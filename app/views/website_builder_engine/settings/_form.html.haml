@@ -22,8 +22,8 @@
     = f.label :site_keywords
     = f.text_field :site_keywords
   .field
-    = f.label :twitter_account
-    = f.text_field :twitter_account
+    = f.label :site_image_url
+    = f.text_field :site_image_url
   .field
     = f.label :domain
     = f.text_field :domain
@@ -42,5 +42,11 @@
   .field
     = f.label :google_analytics_id
     = f.text_field :google_analytics_id
+  .field
+    = f.label :twitter_account
+    = f.text_field :twitter_account
+  .field
+    = f.label :facebook_admin_id
+    = f.text_field :facebook_admin_id
   .actions
     = f.submit 'Save'

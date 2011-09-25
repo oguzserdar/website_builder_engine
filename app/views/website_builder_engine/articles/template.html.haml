@@ -6,12 +6,18 @@
     %meta{:name=>'description', :content=>"#{@article.description}"}
     %meta{:name=>'keywords', :content=>"#{@article.keywords}"}
     -# meta tags for the Open Graph protocol for Facebook
-    %meta{:property => "og:title", :content => "#{@article.title}"}
     %meta{:property => "og:type", :content => "article"}
     %meta{:property => "og:url", :content => "#{@permalink}"}
-    %meta{:property => "og:image", :content => ""}
-    %meta{:property => "og:description", :content => "#{@article.description}"}
-    %meta{:property => "og:site_name", :content => "#{@settings.site_name}"}
+    - unless @article.title.blank?
+      %meta{:property => "og:title", :content => "#{@article.title}"}
+    - unless @article.image_url.blank?
+      %meta{:property => "og:image", :content => "#{@article.image_url}"}
+    - unless @article.description.blank?
+      %meta{:property => "og:description", :content => "#{@article.description}"}
+    - unless @settings.site_name.blank?
+      %meta{:property => "og:site_name", :content => "#{@settings.site_name}"}
+    - unless @settings.facebook_admin_id.blank?
+      %meta{:property => "fb:admins", :content => "#{@settings.facebook_admin_id}"}
     = stylesheet_link_tag :application
     = javascript_include_tag :application
     = csrf_meta_tags
