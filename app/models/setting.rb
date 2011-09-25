@@ -11,4 +11,5 @@ class Setting
   field :offerpages_directory, :type => String
   field :sidebar, :type => String
   field :introduction, :type => String
+  field :google_analytics_id, :type => String
 end
