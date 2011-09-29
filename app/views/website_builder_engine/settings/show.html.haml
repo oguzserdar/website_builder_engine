@@ -17,18 +17,30 @@
   %b Site keywords:
   = @setting.site_keywords
 %p
+  %b Site image URL:
+  = @setting.site_image_url
+%p
   %b Articles directory:
   = @setting.articles_directory
 %p
   %b Offer Pages directory:
   = @setting.offerpages_directory
 %p
+  %b Google Analytics ID:
+  = @setting.twitter_account
+%p
   %b Twitter account:
   = @setting.twitter_account
 %p
+  %b Facebook admin ID:
+  = @setting.twitter_account  
+%p
   %b Article sidebar:
   = @setting.sidebar
-    
+%p
+  %b About the Website:
+  = @setting.about
+        
 = link_to 'Edit', edit_setting_path(@setting)
 \|
 = link_to 'Back', settings_path

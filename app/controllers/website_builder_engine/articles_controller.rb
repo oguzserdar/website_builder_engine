@@ -23,7 +23,7 @@ module WebsiteBuilderEngine
       # create (or recreate) the welcome page
       @articles = Article.where(published: true)
       @welcome_sidebar = RedCloth.new(@settings.sidebar).to_html.html_safe if @settings.sidebar
-      @welcome_intro = RedCloth.new(@settings.introduction).to_html.html_safe if @settings.introduction
+      @welcome_intro = RedCloth.new(@settings.about).to_html.html_safe if @settings.about
       welcome_page = render_to_string(:template => "website_builder_engine/welcome/template.html.haml", :layout => false )
       File.open("#{@docroot_path}index.html", 'w') {|f| f.write(welcome_page) }
       respond_to do |format|

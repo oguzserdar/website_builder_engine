@@ -10,7 +10,7 @@ class Setting
   field :articles_directory, :type => String
   field :offerpages_directory, :type => String
   field :sidebar, :type => String
-  field :introduction, :type => String
+  field :about, :type => String
   field :google_analytics_id, :type => String
   field :twitter_account, :type => String
   field :facebook_admin_id, :type => String
