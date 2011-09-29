@@ -7,7 +7,7 @@
     %meta{:name=>'keywords', :content=>"#{@settings.site_keywords}"}
     -# meta tags for the Open Graph protocol for Facebook
     %meta{:property => "og:type", :content => "website"}
-    %meta{:property => "og:url", :content => "#{@permalink}"}
+    %meta{:property => "og:url", :content => "http://#{@settings.domain}/index.html"}
     - unless @settings.site_title.blank?
       %meta{:property => "og:title", :content => "#{@settings.site_title}"}
     - unless @settings.site_image_url.blank?
