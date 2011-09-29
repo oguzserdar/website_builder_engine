@@ -4,6 +4,7 @@ h2. 0.0.4 unreleased
 
 * fix permalink on welcome page for Facebook metadata
 * rename 'introdution' to 'about' on welcome page
+* change Facebook 'recommend' link location on articles pages
 
 h2. 0.0.3 September 25, 2011
 

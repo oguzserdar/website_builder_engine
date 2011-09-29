@@ -33,6 +33,8 @@
           = @settings.site_tagline
       %hr/
       %article.twelve.columns
+        #fb-root
+          %fb:like{:action => "recommend", :send => "true", :show_faces => "false", :width => "450"}
         %header
           %hgroup
             %h1
@@ -40,8 +42,6 @@
             %h2
               = @article.subhead
         = @content
-        #fb-root
-          %fb:like{:action => "recommend", :send => "true", :show_faces => "false", :width => "450"}
       %aside.four.columns
         %section
           %h1
